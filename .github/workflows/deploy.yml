@@ -1,0 +1,30 @@
+name: Deploy to Netlify
+
+on:
+  push:
+    branches:
+      - main      # każdy push na main → automatyczny deploy
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Pobierz kod
+        uses: actions/checkout@v4
+
+      - name: Zainstaluj Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Zainstaluj zależności (Stripe, Nodemailer)
+        run: npm install
+
+      - name: Wdróż na Netlify
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=. --prod --message "Deploy z GitHub: ${{ github.sha }}"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID:    ${{ secrets.NETLIFY_SITE_ID }}
