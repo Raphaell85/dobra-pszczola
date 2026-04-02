@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O pasiece | Pasieka Dobra Pszczoła</title>
+  <link rel="icon" href="images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .about-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+    .about-img-real { border-radius:20px; overflow:hidden; aspect-ratio:4/3; background:#e8d09a; box-shadow:12px 12px 0 rgba(212,160,23,0.2); }
+    .about-img-real img { width:100%; height:100%; object-fit:cover; display:block; }
+    .facts-li { list-style:none; margin-top:18px; }
+    .facts-li li { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid #f0e0c0; font-size:0.9rem; color:#5a3d1e; }
+    .facts-li li::before { content:'🐝'; flex-shrink:0; }
+    .process-row { display:grid; grid-template-columns:repeat(5,1fr); gap:0; }
+    .proc-step { text-align:center; padding:32px 16px; position:relative; }
+    .proc-step::after { content:'→'; position:absolute; right:-10px; top:50%; transform:translateY(-50%); color:var(--gold); font-size:1.4rem; font-weight:700; }
+    .proc-step:last-child::after { display:none; }
+    .proc-num { display:inline-flex; width:46px; height:46px; background:var(--gold); border-radius:50%; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-weight:900; font-size:1.2rem; color:var(--brown); margin-bottom:14px; }
+    .proc-step h4 { font-family:'Playfair Display',serif; color:var(--brown); margin-bottom:6px; font-size:0.95rem; }
+    .proc-step p { color:#7a5c35; font-size:0.8rem; line-height:1.6; }
+    .values-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+    .val-card { text-align:center; padding:32px 20px; background:#fff; border-radius:18px; box-shadow:0 4px 16px rgba(59,31,10,0.07); transition:transform 0.3s; }
+    .val-card:hover { transform:translateY(-6px); }
+    .val-card .icon { font-size:2.4rem; display:block; margin-bottom:14px; }
+    .val-card h3 { font-family:'Playfair Display',serif; color:var(--brown); font-size:1rem; margin-bottom:8px; }
+    .val-card p { color:#7a5c35; font-size:0.82rem; }
+    .photo-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:40px; }
+    .photo-strip-item { border-radius:14px; overflow:hidden; aspect-ratio:4/3; background:#f5e6c0; }
+    .photo-strip-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s; }
+    .photo-strip-item:hover img { transform:scale(1.07); }
+    @media(max-width:860px) { .about-grid-2{grid-template-columns:1fr} .process-row{grid-template-columns:1fr 1fr} .proc-step::after{display:none} .values-grid{grid-template-columns:1fr 1fr} .photo-strip{grid-template-columns:1fr 1fr} }
+    @media(max-width:540px) { .values-grid{grid-template-columns:1fr} .photo-strip{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+<div id="nav-container"></div>
+
+<div style="background:linear-gradient(135deg,var(--brown),#2d1506);padding:80px 24px 60px;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;right:3%;top:50%;transform:translateY(-50%);font-size:12rem;opacity:0.04;">🐝</div>
+  <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);color:#fff;margin-bottom:12px;">🐝 O pasiece</h1>
+  <p style="color:rgba(255,255,255,0.68);max-width:520px;margin:0 auto;">Poznaj historię rodzinnej pasieki z sercem w Puszczy Iłżeckiej</p>
+  <div style="width:60px;height:4px;background:var(--gold);border-radius:2px;margin:20px auto 0;"></div>
+</div>
+
+<!-- O NAS -->
+<section class="section">
+  <div class="about-grid-2">
+    <div>
+      <span class="section-label">Nasza historia</span>
+      <h2 class="section-title">Z natury,<br>dla natury</h2>
+      <p style="color:#6b5840;margin-bottom:16px;">
+        Pasieka Dobra Pszczoła to rodzinna pasja <strong>Małgorzaty i Rafała Zacharskich</strong>,
+        prowadzona w <strong>Małyszynie Dolnym 20</strong> (gmina Mirzec, woj. świętokrzyskie).
+      </p>
+      <p style="color:#6b5840;margin-bottom:16px;">
+        Nasza pasieka leży w północno-wschodniej części średniowiecznej <strong>Puszczy Świętokrzyskiej</strong>,
+        zwanej Puszczą Iłżecką, na granicy obszaru <strong>Natura 2000</strong>.
+        Ten wyjątkowy ekosystem sprawia, że nasze miody i produkty pszczele
+        cechują się najwyższą jakością.
+      </p>
+      <p style="color:#6b5840;">
+        Pszczoły zbierają nektar, pyłek, propolis i spadź wyłącznie z roślin
+        naturalnego, niezmienionego od wieków środowiska. Stąd niepowtarzalny
+        smak i aromat każdego naszego miodu.
+      </p>
+      <ul class="facts-li reveal">
+        <li>Pasieka wędrowna – różne pożytki, bogata oferta miodów</li>
+        <li>Rolniczy Handel Detaliczny – kupujesz bezpośrednio od rodziny</li>
+        <li>Nadzorowana przez Państwową Inspekcję Weterynaryjną</li>
+        <li>Specjalistyczny sprzęt pszczelarski najwyższej klasy</li>
+        <li>Syn Mikołaj – kontynuator rodzinnej tradycji</li>
+      </ul>
+    </div>
+    <div class="about-img-real reveal">
+      <img src="images/rafal_pszczelarz.jpg" alt="Rafał Zacharski – pszczelarz przy ramce z miodem"
+           onerror="this.parentElement.style.background='linear-gradient(135deg,#c8a870,#8B5E2F)'">
+    </div>
+  </div>
+
+  <!-- Pasek zdjęć -->
+  <div class="photo-strip reveal">
+    <div class="photo-strip-item">
+      <img src="images/pszczoly/ramka.jfif" alt="Plaster pełen miodu" onerror="this.style.display='none'">
+    </div>
+    <div class="photo-strip-item">
+      <img src="images/pszczoly/pszczoly2.jfif" alt="Pszczoły" onerror="this.style.display='none'">
+    </div>
+    <div class="photo-strip-item">
+      <img src="images/pszczoly/a5fe6798-9b11-497a-a287-baf3a48cb78d.jfif" alt="Pasieka" onerror="this.style.display='none'">
+    </div>
+  </div>
+</section>
+
+<!-- LOKALIZACJA -->
+<div style="background:var(--brown);padding:72px 24px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="about-grid-2">
+      <div>
+        <span class="section-label" style="color:var(--gold-lt);">Lokalizacja</span>
+        <h2 class="section-title" style="color:#fff;">Serce Puszczy<br>Iłżeckiej</h2>
+        <p style="color:rgba(255,255,255,0.72);margin-bottom:20px;">
+          Puszcza Iłżecka to fragment dawnej Puszczy Świętokrzyskiej – jednego
+          z najstarszych i najbardziej naturalnych kompleksów leśnych w Polsce.
+          Tu rosną wiekowe dęby, lipy i świerki, z których pszczoły czerpią
+          najcenniejszy nektar i spadź.
+        </p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;" class="reveal">
+          <div style="background:rgba(212,160,23,0.12);border:1px solid rgba(212,160,23,0.25);border-radius:12px;padding:16px;">
+            <strong style="display:block;color:var(--gold-lt);margin-bottom:4px;">🌿 Natura 2000</strong>
+            <span style="color:rgba(255,255,255,0.65);font-size:0.85rem;">Obszar chroniony UE – gwarancja czystości środowiska</span>
+          </div>
+          <div style="background:rgba(212,160,23,0.12);border:1px solid rgba(212,160,23,0.25);border-radius:12px;padding:16px;">
+            <strong style="display:block;color:var(--gold-lt);margin-bottom:4px;">🌲 Puszcza Iłżecka</strong>
+            <span style="color:rgba(255,255,255,0.65);font-size:0.85rem;">Stare lasy iglaste – źródło cennego miodu spadziowego</span>
+          </div>
+          <div style="background:rgba(212,160,23,0.12);border:1px solid rgba(212,160,23,0.25);border-radius:12px;padding:16px;">
+            <strong style="display:block;color:var(--gold-lt);margin-bottom:4px;">🌸 Łąki kwiatowe</strong>
+            <span style="color:rgba(255,255,255,0.65);font-size:0.85rem;">Podstawa wiosennych miodów wielokwiatowych</span>
+          </div>
+          <div style="background:rgba(212,160,23,0.12);border:1px solid rgba(212,160,23,0.25);border-radius:12px;padding:16px;">
+            <strong style="display:block;color:var(--gold-lt);margin-bottom:4px;">🌿 Lipy i gryka</strong>
+            <span style="color:rgba(255,255,255,0.65);font-size:0.85rem;">Pożytki dla miodów lipowego i gryczanego</span>
+          </div>
+        </div>
+      </div>
+      <div style="border-radius:20px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.4);" class="reveal">
+        <img src="images/natura2000.jpg" alt="Logo Natura 2000"
+             style="width:100%;display:block;background:#fff;padding:20px;box-sizing:border-box;"
+             onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCES -->
+<section class="section">
+  <span class="section-label">Od ula do słoika</span>
+  <h2 class="section-title" style="margin-bottom:40px;">Jak powstaje nasz miód</h2>
+  <div class="process-row reveal">
+    <div class="proc-step">
+      <div class="proc-num">1</div>
+      <h4>Pożytek</h4>
+      <p>Pszczoły zbierają nektar z kwiatów i spadź z liści drzew Puszczy Iłżeckiej</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">2</div>
+      <h4>Dojrzewanie</h4>
+      <p>Miód dojrzewa w plastrach przez 2–3 tygodnie – pszczoły odparowują nadmiar wody</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">3</div>
+      <h4>Odwirowanie</h4>
+      <p>Odwirowujemy w zimnej miodarni – bez podgrzewania, zachowując pełnię wartości</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">4</div>
+      <h4>Kontrola</h4>
+      <p>Każda partia pod nadzorem Inspekcji Weterynaryjnej i naszą osobistą kontrolą</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">5</div>
+      <h4>Do Ciebie</h4>
+      <p>Pakujemy świeżo i wysyłamy kurierem bezpośrednio do Twojego domu</p>
+    </div>
+  </div>
+</section>
+
+<!-- WARTOŚCI -->
+<div style="background:#fdf8ee;padding:72px 24px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <span class="section-label">Co nas wyróżnia</span>
+    <h2 class="section-title" style="margin-bottom:36px;">Nasze wartości</h2>
+    <div class="values-grid">
+      <div class="val-card reveal"><span class="icon">🌿</span><h3>100% naturalny</h3><p>Żadnej chemii, żadnych dodatków, bez pasteryzacji. Czysty miód takim, jakim stworzył go pszczoła.</p></div>
+      <div class="val-card reveal"><span class="icon">🐝</span><h3>Dbałość o pszczoły</h3><p>Dobrostan rodzin pszczelich to nasz priorytet. Zdrowe pszczoły to wyborny miód.</p></div>
+      <div class="val-card reveal"><span class="icon">🤝</span><h3>Bez pośredników</h3><p>Kupujesz bezpośrednio od pszczelarza, który zna każdy ul i każdy miód.</p></div>
+      <div class="val-card reveal"><span class="icon">🏆</span><h3>Nagrodzona jakość</h3><p>Perła 2023 i dwa złote medale MTP Poznań – smak potwierdzony przez ekspertów.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div style="background:linear-gradient(135deg,var(--green),#1d3a12);padding:64px 24px;text-align:center;">
+  <h2 style="font-family:'Playfair Display',serif;font-size:2rem;color:#fff;margin-bottom:14px;">Zamów nagrodzony miód 🍯</h2>
+  <p style="color:rgba(255,255,255,0.72);margin-bottom:28px;">Dostawa kurierem w całej Polsce lub odbiór osobisty w Małyszynie Dolnym.</p>
+  <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;">
+    <a href="sklep.html" class="btn-primary">🛒 Sklep</a>
+    <a href="kontakt.html" class="btn-primary" style="background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.35);box-shadow:none;">📞 Kontakt</a>
+  </div>
+</div>
+
+<div id="footer-container"></div>
+<div id="checkout-container"></div>
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="js/stripe.js"></script>
+<script>
+document.getElementById('nav-container').innerHTML = getNavHTML('images/logo-pasieka.png');
+document.getElementById('footer-container').innerHTML = getFooterHTML('images/logo-pasieka.png');
+document.getElementById('checkout-container').innerHTML = getCheckoutModalHTML();
+</script>
+</body>
+</html>

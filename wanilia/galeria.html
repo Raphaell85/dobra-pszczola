@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria | Wanilia i Migdały</title>
+  <link rel="icon" href="../images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="wanilia.css">
+  <style>
+    .gtabs { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px; }
+    .gtab { padding:8px 22px; border-radius:50px; border:2px solid #f0dcea; background:#fff; color:var(--pd); font-weight:700; cursor:pointer; font-size:0.86rem; transition:all 0.2s; }
+    .gtab:hover,.gtab.on { background:var(--pw); border-color:var(--pw); color:#fff; }
+    .masonry { columns:3; column-gap:13px; }
+    .m-item { break-inside:avoid; margin-bottom:13px; border-radius:14px; overflow:hidden; cursor:pointer; position:relative; background:var(--plg); display:block; }
+    .m-item img { width:100%; display:block; transition:transform 0.4s; }
+    .m-item:hover img { transform:scale(1.06); }
+    .m-ov { position:absolute; inset:0; background:rgba(46,20,32,0.38); display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity 0.3s; color:#fff; font-size:1.6rem; }
+    .m-item:hover .m-ov { opacity:1; }
+    .m-cap { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent,rgba(46,20,32,0.75)); color:#fff; font-size:0.78rem; padding:18px 12px 8px; opacity:0; transition:opacity 0.3s; }
+    .m-item:hover .m-cap { opacity:1; }
+    @media(max-width:700px) { .masonry{columns:2;} }
+    @media(max-width:440px) { .masonry{columns:1;} }
+  </style>
+</head>
+<body>
+<div id="w-nav"></div>
+
+<div style="background:linear-gradient(135deg,var(--pd),#5a1040);padding:72px 24px 52px;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;right:3%;top:50%;transform:translateY(-50%);font-size:12rem;opacity:0.04;">📸</div>
+  <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.4rem);color:#fff;margin-bottom:12px;">📸 Galeria</h1>
+  <p style="color:rgba(255,255,255,0.68);max-width:500px;margin:0 auto;">Torty, ciasta, wyroby garmażeryjne i chwile z naszej pracy</p>
+  <div style="width:60px;height:4px;background:var(--pw);border-radius:2px;margin:20px auto 0;"></div>
+</div>
+
+<section class="section">
+  <div class="gtabs">
+    <button class="gtab on" onclick="showCat('all',this)">Wszystkie</button>
+    <button class="gtab" onclick="showCat('torty',this)">🎂 Torty</button>
+    <button class="gtab" onclick="showCat('cukiernicze',this)">🍰 Ciasta</button>
+    <button class="gtab" onclick="showCat('garmazeryjne',this)">🥟 Garmażeryjne</button>
+    <button class="gtab" onclick="showCat('chlebki',this)">🍞 Chlebki</button>
+    <button class="gtab" onclick="showCat('perla',this)">🏆 Perła 2025</button>
+    <button class="gtab" onclick="showCat('swiateczne',this)">🎄 Świąteczne</button>
+  </div>
+  <div class="masonry" id="gallery-grid"></div>
+</section>
+
+<!-- Lightbox -->
+<div class="lb" id="lb">
+  <button class="lb-close" onclick="closeLb()">×</button>
+  <button class="lb-nav lb-prev" onclick="navLb(-1)">‹</button>
+  <img id="lb-img" src="" alt="">
+  <button class="lb-nav lb-next" onclick="navLb(1)">›</button>
+</div>
+
+<div id="w-footer"></div>
+<script src="_shared.js"></script>
+<script>
+document.getElementById('w-nav').innerHTML = waniliaNav('galeria.html');
+document.getElementById('w-footer').innerHTML = waniliaFooter();
+initWanilia();
+
+const PHOTOS = [
+  // Torty
+  { src:'images/torty/tort_okolicznosciowy.jpg',  cat:'torty',       cap:'Tort okolicznościowy' },
+  { src:'images/torty/tort_okolicznosciowy2.jpg', cat:'torty',       cap:'Tort urodzinowy' },
+  { src:'images/torty/tort1.jpg',                 cat:'torty',       cap:'Tort' },
+  { src:'images/torty/tort2.jpg',                 cat:'torty',       cap:'Tort' },
+  { src:'images/torty/tort3.jpg',                 cat:'torty',       cap:'Tort weselny' },
+  { src:'images/torty/tort4.jpg',                 cat:'torty',       cap:'Tort' },
+  { src:'images/torty/tort5.jpg',                 cat:'torty',       cap:'Tort na zamówienie' },
+  { src:'images/wyroby/tort.jpg',                 cat:'torty',       cap:'Tort' },
+  // Ciasta
+  { src:'images/cukiernicze/sernikwkratke_nagrodzony.jpg', cat:'cukiernicze', cap:'Sernik w kratkę – nagrodzony' },
+  { src:'images/cukiernicze/cukiernicze1.jpg',    cat:'cukiernicze', cap:'Wyroby cukiernicze' },
+  { src:'images/cukiernicze/cukiernicze2.jpg',    cat:'cukiernicze', cap:'Ciasta domowe' },
+  { src:'images/cukiernicze/cukiernicze3.jpg',    cat:'cukiernicze', cap:'Wypieki' },
+  { src:'images/cukiernicze/cukiernicze4.jpg',    cat:'cukiernicze', cap:'Wypieki domowe' },
+  { src:'images/cukiernicze/cukiernicze5.jpg',    cat:'cukiernicze', cap:'Ciasta' },
+  { src:'images/wyroby/wyroby1.jpg',              cat:'cukiernicze', cap:'Wyroby cukiernicze' },
+  { src:'images/wyroby/wyroby2.jpg',              cat:'cukiernicze', cap:'Wyroby' },
+  { src:'images/wyroby/wyroby3.jpg',              cat:'cukiernicze', cap:'Wyroby' },
+  { src:'images/wyroby/wyroby4.jpg',              cat:'cukiernicze', cap:'Wyroby' },
+  // Garmażeryjne
+  { src:'images/garmazeryjne/garmazeryjne1.jpg',  cat:'garmazeryjne',cap:'Wyroby garmażeryjne' },
+  { src:'images/garmazeryjne/garmazeryjne2.jpg',  cat:'garmazeryjne',cap:'Wyroby garmażeryjne' },
+  { src:'images/garmazeryjne/garmazeryjne3.jpg',  cat:'garmazeryjne',cap:'Wyroby garmażeryjne' },
+  { src:'images/garmazeryjne/garmazeryjne4.jpg',  cat:'garmazeryjne',cap:'Wyroby garmażeryjne' },
+  { src:'images/garmazeryjne/garmazeryjne5.jpg',  cat:'garmazeryjne',cap:'Wyroby garmażeryjne' },
+  { src:'images/garmazeryjne/garmazeryjne6.jpg',  cat:'garmazeryjne',cap:'Wyroby garmażeryjne' },
+  { src:'images/garmazeryjne/bigos.jpg',          cat:'garmazeryjne',cap:'Bigos' },
+  { src:'images/garmazeryjne/bigos2.jpg',         cat:'garmazeryjne',cap:'Bigos domowy' },
+  { src:'images/wyroby/pierogi.jpg',              cat:'garmazeryjne',cap:'Pierogi z kapustą i mięsem' },
+  // Chlebki
+  { src:'images/chlebki/pszenno_zytni.jpg',       cat:'chlebki',     cap:'Chleb pszenno-żytni' },
+  // Perła 2025
+  { src:'images/perla2025/perla2025_1.jpg',       cat:'perla',       cap:'Perła 2025 – uroczystość wręczenia' },
+  { src:'images/perla2025/perla2025_2.jpg',       cat:'perla',       cap:'Perła 2025' },
+  { src:'images/perla2025/perla2025_3.jpg',       cat:'perla',       cap:'Perła 2025 – Małgorzata i Rafał Zacharscy' },
+  { src:'images/perla2025/perla2025_4.jpg',       cat:'perla',       cap:'Perła 2025' },
+  { src:'images/malgorzata.jpg',                  cat:'perla',       cap:'Małgorzata Zacharska – Smaki Regionów' },
+  // Świąteczne
+  { src:'images/swiateczne/swiateczne1.jpg',      cat:'swiateczne',  cap:'Świąteczne wypieki' },
+];
+
+let activeCat = 'all', visible = [], lbIdx = 0;
+
+function showCat(cat, btn) {
+  document.querySelectorAll('.gtab').forEach(t => t.classList.remove('on'));
+  btn.classList.add('on');
+  activeCat = cat;
+  renderGallery();
+}
+
+function renderGallery() {
+  visible = activeCat === 'all' ? PHOTOS : PHOTOS.filter(p => p.cat === activeCat);
+  document.getElementById('gallery-grid').innerHTML = visible.map((p, i) => `
+    <div class="m-item" onclick="openLb(${i})">
+      <img src="${p.src}" alt="${p.cap}" loading="lazy" onerror="this.parentElement.style.display='none'">
+      <div class="m-ov">🔍</div>
+      <div class="m-cap">${p.cap}</div>
+    </div>`).join('');
+}
+
+function openLb(i) {
+  lbIdx = i;
+  document.getElementById('lb-img').src = visible[i].src;
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb() { document.getElementById('lb').classList.remove('open'); document.body.style.overflow = ''; }
+function navLb(d) { lbIdx = (lbIdx + d + visible.length) % visible.length; document.getElementById('lb-img').src = visible[lbIdx].src; }
+document.getElementById('lb').addEventListener('click', e => { if(e.target===e.currentTarget) closeLb(); });
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeLb(); if(e.key==='ArrowLeft') navLb(-1); if(e.key==='ArrowRight') navLb(1); });
+
+renderGallery();
+</script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria | Pasieka Dobra Pszczoła</title>
+  <link rel="icon" href="images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .gallery-tabs { display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap; }
+    .gtab { padding:9px 22px; border-radius:50px; border:2px solid #e8d8c0; background:#fff; color:var(--brown); font-weight:700; cursor:pointer; font-size:0.88rem; transition:all 0.2s; }
+    .gtab:hover,.gtab.on { background:var(--gold); border-color:var(--gold); }
+
+    .masonry { columns:3; column-gap:14px; }
+    .masonry-item { break-inside:avoid; margin-bottom:14px; border-radius:14px; overflow:hidden; cursor:pointer; position:relative; display:block; background:#f5e6c0; }
+    .masonry-item img { width:100%; display:block; transition:transform 0.4s; }
+    .masonry-item:hover img { transform:scale(1.06); }
+    .masonry-overlay { position:absolute; inset:0; background:rgba(59,31,10,0.4); display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity 0.3s; font-size:1.8rem; color:#fff; }
+    .masonry-item:hover .masonry-overlay { opacity:1; }
+    .masonry-caption { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent,rgba(59,31,10,0.75)); color:#fff; font-size:0.8rem; padding:20px 12px 10px; opacity:0; transition:opacity 0.3s; }
+    .masonry-item:hover .masonry-caption { opacity:1; }
+
+    /* Lightbox */
+    .lb { position:fixed; inset:0; background:rgba(0,0,0,0.93); z-index:2000; display:none; align-items:center; justify-content:center; padding:20px; }
+    .lb.open { display:flex; }
+    .lb img { max-width:90vw; max-height:85vh; border-radius:10px; object-fit:contain; }
+    .lb-close { position:absolute; top:18px; right:22px; color:#fff; font-size:2.5rem; cursor:pointer; background:none; border:none; line-height:1; }
+    .lb-nav { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.12); border:none; color:#fff; font-size:2rem; width:52px; height:52px; border-radius:50%; cursor:pointer; transition:background 0.2s; }
+    .lb-nav:hover { background:rgba(212,160,23,0.5); }
+    .lb-prev { left:16px; }
+    .lb-next { right:16px; }
+    .lb-caption { position:absolute; bottom:16px; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.75); font-size:0.88rem; white-space:nowrap; }
+
+    @media(max-width:700px) { .masonry { columns:2; } }
+    @media(max-width:440px) { .masonry { columns:1; } }
+  </style>
+</head>
+<body>
+<div id="nav-container"></div>
+
+<div style="background:linear-gradient(135deg,var(--brown),#2d1506);padding:80px 24px 60px;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;right:3%;top:50%;transform:translateY(-50%);font-size:12rem;opacity:0.04;">📸</div>
+  <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);color:#fff;margin-bottom:12px;">📸 Galeria</h1>
+  <p style="color:rgba(255,255,255,0.68);max-width:520px;margin:0 auto;">Zapraszamy za kulisy pasieki – ule, pszczoły, miody i nagrody</p>
+  <div style="width:60px;height:4px;background:var(--gold);border-radius:2px;margin:20px auto 0;"></div>
+</div>
+
+<section class="section">
+  <div class="gallery-tabs">
+    <button class="gtab on" onclick="showCat('all',this)">Wszystkie</button>
+    <button class="gtab" onclick="showCat('miody',this)">🍯 Miody</button>
+    <button class="gtab" onclick="showCat('pszczoly',this)">🐝 Pszczoły i ule</button>
+    <button class="gtab" onclick="showCat('nagrody',this)">🏆 Nagrody</button>
+    <button class="gtab" onclick="showCat('warsztaty',this)">🎓 Warsztaty</button>
+  </div>
+
+  <div class="masonry" id="gallery-grid"></div>
+</section>
+
+<!-- Lightbox -->
+<div class="lb" id="lb">
+  <button class="lb-close" onclick="closeLb()">×</button>
+  <button class="lb-nav lb-prev" onclick="navLb(-1)">‹</button>
+  <img id="lb-img" src="" alt="">
+  <button class="lb-nav lb-next" onclick="navLb(1)">›</button>
+  <div class="lb-caption" id="lb-cap"></div>
+</div>
+
+<div id="footer-container"></div>
+<div id="checkout-container"></div>
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="js/stripe.js"></script>
+<script>
+document.getElementById('nav-container').innerHTML = getNavHTML('images/logo-pasieka.png');
+document.getElementById('footer-container').innerHTML = getFooterHTML('images/logo-pasieka.png');
+document.getElementById('checkout-container').innerHTML = getCheckoutModalHTML();
+
+const PHOTOS = [
+  // Miody
+  { src:'images/miody/miody.jfif',               cat:'miody',    cap:'Nasze miody' },
+  { src:'images/miody/gryczany.jfif',             cat:'miody',    cap:'Miód gryczany – najlepszy w województwie' },
+  { src:'images/miody/spadziowyiglasty.jfif',     cat:'miody',    cap:'Miód spadziowy iglasty – Złoto MTP Poznań' },
+  { src:'images/miody/lipowy.jpg',                cat:'miody',    cap:'Miód lipowy' },
+  { src:'images/miody/akacjowy.jfif',             cat:'miody',    cap:'Miód akacjowy' },
+  { src:'images/miody/zpylkiemipropolisem.jfif',  cat:'miody',    cap:'Kremowany z pyłkiem i propolisem' },
+  { src:'images/miody/pierzga.jfif',              cat:'miody',    cap:'Pierzga pszczela' },
+  { src:'images/miody/spadziowonawlociowy.jfif',  cat:'miody',    cap:'Miód nektarowo-spadziowy' },
+  { src:'images/miody/wielokwiatowy.jpg',         cat:'miody',    cap:'Miód wielokwiatowy' },
+  // Pszczoły i ule
+  { src:'images/pszczoly/pszczoly.jfif',          cat:'pszczoly', cap:'Pszczoły przy pracy' },
+  { src:'images/pszczoly/pszczoly2.jfif',         cat:'pszczoly', cap:'Rój pszczół' },
+  { src:'images/pszczoly/ramka.jfif',             cat:'pszczoly', cap:'Plaster pełen miodu' },
+  { src:'images/pszczoly/a5fe6798-9b11-497a-a287-baf3a48cb78d.jfif', cat:'pszczoly', cap:'Przy ulach' },
+  // Nagrody
+  { src:'images/nagrody/perla2023.jfif',          cat:'nagrody',  cap:'Perła 2023 – najważniejsza nagroda kulinarna' },
+  { src:'images/nagrody/perla2023_1.jpg',         cat:'nagrody',  cap:'Perła 2023' },
+  { src:'images/nagrody/medale.jpg',              cat:'nagrody',  cap:'Nasze medale i wyróżnienia' },
+  { src:'images/nagrody/dyplom.jfif',             cat:'nagrody',  cap:'Dyplom' },
+  { src:'images/nagrody/dyplom2.jfif',            cat:'nagrody',  cap:'Dyplom' },
+  { src:'images/nagrody/dyplom3.jpg',             cat:'nagrody',  cap:'Dyplom' },
+  { src:'images/nagrody/dyplom4.jpg',             cat:'nagrody',  cap:'Dyplom' },
+  { src:'images/nagrody/dyplom_smaki_2024.jpg',   cat:'nagrody',  cap:'Dyplom Smaki Regionów 2024' },
+  { src:'images/nagrody/smaki_regionow_2024.jpg', cat:'nagrody',  cap:'Smaki Regionów 2024' },
+  { src:'images/nagrody/kulinarnedziedzictwo_smakiregionow_miodspadziowyzespadzidzrzewiglastych.jfif', cat:'nagrody', cap:'Kulinarne Dziedzictwo – miód spadziowy' },
+  { src:'images/nagrody/swietokrzyskakuzniasmakow.jfif', cat:'nagrody', cap:'Świętokrzyska Kuźnia Smaków' },
+  // Warsztaty
+  { src:'images/warsztaty/1988d977-0355-4945-adc0-06a201a8d482.jfif', cat:'warsztaty', cap:'Warsztaty pszczelarskie' },
+  { src:'images/warsztaty/e140b256-6961-411c-bf8f-840140a3fa6d.jfif', cat:'warsztaty', cap:'Warsztaty dla dzieci' },
+];
+
+let activeCat = 'all';
+let visible = [];
+let lbIdx = 0;
+
+function showCat(cat, btn) {
+  document.querySelectorAll('.gtab').forEach(t => t.classList.remove('on'));
+  btn.classList.add('on');
+  activeCat = cat;
+  renderGallery();
+}
+
+function renderGallery() {
+  visible = activeCat === 'all' ? PHOTOS : PHOTOS.filter(p => p.cat === activeCat);
+  const grid = document.getElementById('gallery-grid');
+  grid.innerHTML = visible.map((p, i) => `
+    <div class="masonry-item" onclick="openLb(${i})">
+      <img src="${p.src}" alt="${p.cap}" loading="lazy"
+           onerror="this.parentElement.style.display='none'">
+      <div class="masonry-overlay">🔍</div>
+      <div class="masonry-caption">${p.cap}</div>
+    </div>`).join('');
+}
+
+function openLb(i) {
+  lbIdx = i;
+  document.getElementById('lb-img').src = visible[i].src;
+  document.getElementById('lb-cap').textContent = visible[i].cap;
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb() {
+  document.getElementById('lb').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function navLb(d) {
+  lbIdx = (lbIdx + d + visible.length) % visible.length;
+  document.getElementById('lb-img').src = visible[lbIdx].src;
+  document.getElementById('lb-cap').textContent = visible[lbIdx].cap;
+}
+document.getElementById('lb').addEventListener('click', e => { if(e.target===e.currentTarget) closeLb(); });
+document.addEventListener('keydown', e => {
+  if (e.key==='Escape') closeLb();
+  if (e.key==='ArrowLeft') navLb(-1);
+  if (e.key==='ArrowRight') navLb(1);
+});
+
+renderGallery();
+</script>
+</body>
+</html>

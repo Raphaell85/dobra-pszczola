@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wanilia i Migdały | Ciasta, Torty, Wyroby garmażeryjne – Małyszyn Dolny</title>
+  <meta name="description" content="Wanilia i Migdały – Perła 2025! Wyśmienite torty, ciasta i wyroby garmażeryjne z naturalnych składników własnego gospodarstwa. Małgorzata i Rafał Zacharscy, Małyszyn Dolny. Tel. 533 863 133.">
+  <link rel="icon" href="../images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="wanilia.css">
+  <style>
+    /* ── HERO ── */
+    .w-hero { min-height: 96vh; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
+    .w-hero-left {
+      background: linear-gradient(155deg, var(--pd) 0%, #5a1040 100%);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 56px 100px; position: relative; z-index: 1;
+    }
+    .w-hero-left::after {
+      content: ''; position: absolute; right: -44px; top: 0; bottom: 0; width: 88px;
+      background: linear-gradient(155deg, var(--pd) 0%, #5a1040 100%);
+      clip-path: polygon(0 0, 0 100%, 100% 100%); z-index: 2;
+    }
+    .w-hero-right { position: relative; overflow: hidden; }
+    .w-hero-right img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .w-hero-right::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(46,20,32,0.25), transparent);
+    }
+
+    .w-logo-hero { max-width: 280px; width: 90%; height: auto;
+      background: rgba(255,255,255,0.94); border-radius: 14px;
+      padding: 10px 18px; margin-bottom: 32px;
+      filter: drop-shadow(0 4px 14px rgba(0,0,0,0.3)); }
+    .w-tag-hero {
+      display: inline-flex; gap: 8px; align-items: center;
+      background: rgba(232,24,108,0.2); border: 1px solid rgba(232,24,108,0.45);
+      color: #f090c0; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 18px;
+    }
+    .w-hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 3.8vw, 3.6rem);
+      color: #fff; line-height: 1.05; margin-bottom: 18px;
+    }
+    .w-hero-h1 em { color: #f090c0; font-style: italic; display: block; }
+    .w-hero-desc { color: rgba(255,255,255,0.72); font-size: 0.98rem; line-height: 1.85; margin-bottom: 32px; max-width: 400px; }
+    .hero-badges-w {
+      position: absolute; bottom: 0; left: 0; right: 44px;
+      display: flex; background: rgba(0,0,0,0.28); backdrop-filter: blur(4px); z-index: 3;
+    }
+    .hbw { flex: 1; padding: 16px 20px; border-right: 1px solid rgba(255,255,255,0.1); text-align: center; }
+    .hbw:last-child { border-right: none; }
+    .hbw strong { display: block; font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #f090c0; }
+    .hbw span { font-size: 0.72rem; color: rgba(255,255,255,0.6); }
+
+    /* ── 3 filary ── */
+    .w-pillars { display: grid; grid-template-columns: repeat(3,1fr); background: #fff; border-bottom: 1px solid #f0dcea; }
+    .w-pillar { padding: 48px 32px; text-align: center; border-right: 1px solid #f0dcea; }
+    .w-pillar:last-child { border-right: none; }
+    .w-pillar .icon { font-size: 2.4rem; display: block; margin-bottom: 14px; }
+    .w-pillar h3 { font-family: 'Playfair Display', serif; color: var(--pd); font-size: 1.1rem; margin-bottom: 9px; }
+    .w-pillar p { color: #7a4060; font-size: 0.86rem; line-height: 1.7; }
+
+    /* ── OPIS ── */
+    .w-desc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .w-desc-photo { border-radius: 20px; overflow: hidden; box-shadow: 12px 12px 0 rgba(232,24,108,0.12); }
+    .w-desc-photo img { width: 100%; display: block; }
+
+    /* responsive */
+    @media(max-width:900px) {
+      .w-hero { grid-template-columns: 1fr; min-height: auto; }
+      .w-hero-left { padding: 52px 24px 36px; }
+      .w-hero-left::after { display: none; }
+      .w-hero-right { height: 280px; }
+      .hero-badges-w { position: static; flex-wrap: wrap; }
+      .w-pillars { grid-template-columns: 1fr; }
+      .w-pillar { border-right: none; border-bottom: 1px solid #f0dcea; padding: 32px 20px; }
+      .w-desc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div id="w-nav"></div>
+
+<!-- HERO -->
+<section class="w-hero">
+  <div class="w-hero-left">
+    <img src="images/logo-wanilia.png" alt="Wanilia i Migdały" class="w-logo-hero">
+    <div class="w-tag-hero">🏆 Perła 2025 • Dziedzictwo Kulinarne Świętokrzyskie</div>
+    <h1 class="w-hero-h1">Smak,<br><em>jak u mamy</em></h1>
+    <p class="w-hero-desc">
+      Wyśmienite torty, ciasta i wyroby garmażeryjne
+      tworzone domowymi sposobami z naturalnych składników
+      własnego gospodarstwa rolnego w Małyszynie Dolnym.
+    </p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="oferta.html" class="btn-pink">🍰 Nasza oferta</a>
+      <a href="kontakt.html" class="btn-outline-w">Zamów →</a>
+    </div>
+  </div>
+  <div class="w-hero-right">
+    <img src="images/malgorzata.jpg" alt="Małgorzata Zacharska z sernikiem w kratkę na konkursie"
+         onerror="this.parentElement.style.background='linear-gradient(135deg,#c97ab5,#7a3560)';this.remove()">
+    <div class="hero-badges-w">
+      <div class="hbw"><strong>🏆</strong><span>Perła 2025</span></div>
+      <div class="hbw"><strong>🍰</strong><span>Torty i ciasta</span></div>
+      <div class="hbw"><strong>🌾</strong><span>Własne składniki</span></div>
+      <div class="hbw"><strong>📜</strong><span>RHD 26113513</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="w-ticker">
+  <div class="w-ticker-track">
+    <span class="w-ticker-item">🏆 PERŁA 2025 – najważniejsza nagroda dla produktów regionalnych w Polsce!</span>
+    <span class="w-ticker-item">🥇 Sernik w kratkę – najwyższe wyróżnienie konkursu Smaki Regionów</span>
+    <span class="w-ticker-item">🍽 Dziedzictwo Kulinarne Świętokrzyskie – certyfikat 2021</span>
+    <span class="w-ticker-item">🌾 Naturalne składniki z własnego gospodarstwa rolnego</span>
+    <span class="w-ticker-item">📞 Zamówienia: 533 863 133</span>
+    <span class="w-ticker-item">🏆 PERŁA 2025 – najważniejsza nagroda dla produktów regionalnych w Polsce!</span>
+    <span class="w-ticker-item">🥇 Sernik w kratkę – najwyższe wyróżnienie konkursu Smaki Regionów</span>
+    <span class="w-ticker-item">🍽 Dziedzictwo Kulinarne Świętokrzyskie – certyfikat 2021</span>
+    <span class="w-ticker-item">🌾 Naturalne składniki z własnego gospodarstwa rolnego</span>
+    <span class="w-ticker-item">📞 Zamówienia: 533 863 133</span>
+  </div>
+</div>
+
+<!-- PERŁA 2025 – wielki baner -->
+<div class="perla-hero-band">
+  <span class="perla-glow">🏆</span>
+  <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);color:#f090c0;margin-bottom:10px;position:relative;">
+    <span style="display:block;color:#fff;font-size:0.58em;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">Najważniejsza nagroda kulinarna w Polsce</span>
+    Perła 2025
+  </h2>
+  <p style="color:rgba(255,255,255,0.75);max-width:640px;margin:0 auto 28px;font-size:1rem;line-height:1.8;position:relative;">
+    Farsz z kaszy gryczanej niepalonej z Małyszyna zdobył <strong style="color:#fff;">Perłę 2025</strong> –
+    prestiżową nagrodę przyznawaną najwyjątkniejszym produktom regionalnym w Polsce.
+    Nasze Perła dołączyła do Perły 2023 Pasieki Dobra Pszczoła –
+    dwie Perły w jednej rodzinie!
+  </p>
+  <span style="display:inline-flex;gap:8px;align-items:center;background:var(--pw);color:#fff;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:10px 24px;border-radius:100px;box-shadow:0 4px 20px rgba(232,24,108,0.5);position:relative;">
+    🌾 Farsz z kaszy gryczanej niepalonej • Perła 2025
+  </span>
+
+  <!-- Zdjęcia z uroczystości -->
+  <div style="max-width:900px;margin:40px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;" class="reveal">
+    <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:rgba(255,255,255,0.1);">
+      <img src="images/perla2025/perla2025_1.jpg" alt="Perła 2025 – uroczystość wręczenia" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+    </div>
+    <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:rgba(255,255,255,0.1);">
+      <img src="images/perla2025/perla2025_2.jpg" alt="Perła 2025" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+    </div>
+    <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:rgba(255,255,255,0.1);">
+      <img src="images/perla2025/perla2025_3.jpg" alt="Perła 2025" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+    </div>
+    <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:rgba(255,255,255,0.1);">
+      <img src="images/perla2025/perla2025_4.jpg" alt="Perła 2025" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- 3 FILARY -->
+<div class="w-pillars" style="max-width:1200px;margin:0 auto;">
+  <div class="w-pillar reveal">
+    <span class="icon">🌾</span>
+    <h3>Własne składniki</h3>
+    <p>Wszystkie surowce pochodzą z naszego gospodarstwa rolnego. Wiemy, skąd pochodzi każdy składnik.</p>
+  </div>
+  <div class="w-pillar reveal">
+    <span class="icon">🤲</span>
+    <h3>Domowe sposoby</h3>
+    <p>Każde ciasto i tort przygotowujemy ręcznie, tradycyjnymi metodami. Tak dobre jak u mamy.</p>
+  </div>
+  <div class="w-pillar reveal">
+    <span class="icon">🏆</span>
+    <h3>Nagrodzone wyroby</h3>
+    <p>Perła 2025, sernik nagrodzony na Smakach Regionów, certyfikat Dziedzictwa Kulinarnego.</p>
+  </div>
+</div>
+
+<!-- O NAS -->
+<section style="background:var(--pcr);padding:72px 24px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="w-desc-grid">
+      <div>
+        <span class="w-label">Kim jesteśmy</span>
+        <h2 class="w-title">Wanilia i Migdały</h2>
+        <p style="color:#5a2040;font-size:0.95rem;line-height:1.85;margin-bottom:16px;">
+          Naszą specjalnością są wyśmienite torty i ciasta oraz wyroby garmażeryjne,
+          które tworzymy domowymi sposobami. Bazujemy zawsze na najlepszych składnikach
+          z naszego gospodarstwa, by na Państwa stołach gościły potrawy smaczne i zdrowe –
+          <strong>tak dobre jak u mamy</strong>.
+        </p>
+        <p style="color:#5a2040;font-size:0.92rem;line-height:1.8;margin-bottom:20px;">
+          Jesteśmy Małgorzata i Rafał Zacharscy z Małyszyna Dolnego. Prowadzimy działalność
+          w ramach <strong>Rolniczego Handlu Detalicznego (RHD WNI: 26113513)</strong>.
+          Serdecznie zapraszamy!
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:4px;">
+          <span style="background:rgba(232,24,108,0.1);border:1px solid rgba(232,24,108,0.25);border-radius:10px;padding:10px 16px;font-size:0.83rem;color:var(--pd);">🌾 Własne gospodarswo</span>
+          <span style="background:rgba(232,24,108,0.1);border:1px solid rgba(232,24,108,0.25);border-radius:10px;padding:10px 16px;font-size:0.83rem;color:var(--pd);">🤲 Ręczna robota</span>
+          <span style="background:rgba(232,24,108,0.1);border:1px solid rgba(232,24,108,0.25);border-radius:10px;padding:10px 16px;font-size:0.83rem;color:var(--pd);">📜 RHD 26113513</span>
+        </div>
+        <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="oferta.html" class="btn-pink">Sprawdź ofertę →</a>
+          <a href="kontakt.html" class="btn-teal">📞 Zamów</a>
+        </div>
+      </div>
+      <div class="w-desc-photo reveal">
+        <img src="images/malgorzata.jpg" alt="Małgorzata Zacharska prezentuje sernik w kratkę z Małyszyna"
+             onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WYBRANE WYROBY -->
+<section class="section" style="padding-bottom:0;">
+  <span class="w-label">Wyroby</span>
+  <h2 class="w-title" style="margin-bottom:32px;">Nasze specjalności</h2>
+  <div class="w-prod-grid">
+
+    <div class="w-prod-card reveal">
+      <div class="w-prod-img">
+        <img src="images/cukiernicze/sernikwkratke_nagrodzony.jpg" alt="Sernik w kratkę z Małyszyna"
+             onerror="this.style.display='none';this.parentElement.textContent='🍰'">
+        <span class="w-prod-badge">🥇 Nagrodzony</span>
+      </div>
+      <div class="w-prod-body">
+        <h3>Sernik w kratkę z Małyszyna</h3>
+        <p>Nasz flagowy wypiek – zdobywca najwyższego wyróżnienia na ogólnopolskim konkursie Smaki Regionów. Regionalny, pieczony tradycyjną metodą.</p>
+      </div>
+    </div>
+
+    <div class="w-prod-card reveal">
+      <div class="w-prod-img">
+        <img src="images/torty/tort_okolicznosciowy.jpg" alt="Tort okolicznościowy"
+             onerror="this.style.display='none';this.parentElement.textContent='🎂'">
+        <span class="w-prod-badge">Na zamówienie</span>
+      </div>
+      <div class="w-prod-body">
+        <h3>Torty okolicznościowe</h3>
+        <p>Torty weselne, urodzinowe, komunijne. Każdy przygotowywany indywidualnie ze świeżych składników. Uzgodnimy wygląd i smak.</p>
+      </div>
+    </div>
+
+    <div class="w-prod-card reveal">
+      <div class="w-prod-img" style="font-size:5rem;">🌾</div>
+      <div class="w-prod-body">
+        <h3>Farsz z kaszy gryczanej niepalonej</h3>
+        <p>Zdobywca <strong>Perły 2025</strong> – najważniejszej nagrody kulinarnej w Polsce. Tradycyjny wyrób garmażeryjny z ekologicznej kaszy gryczanej z naszych własnych upraw.</p>
+      </div>
+    </div>
+
+    <div class="w-prod-card reveal">
+      <div class="w-prod-img">
+        <img src="images/wyroby/pierogi.jpg" alt="Pierogi z kapustą i mięsem"
+             onerror="this.style.display='none';this.parentElement.textContent='🥟'">
+        <span class="w-prod-badge teal">Garmażeryjne</span>
+      </div>
+      <div class="w-prod-body">
+        <h3>Pierogi z kapustą i mięsem</h3>
+        <p>Ręcznie lepione tradycyjne pierogi z domowym nadzieniem ze składników własnego gospodarstwa.</p>
+      </div>
+    </div>
+
+    <div class="w-prod-card reveal">
+      <div class="w-prod-img">
+        <img src="images/chlebki/pszenno_zytni.jpg" alt="Chlebki pszenno-żytnie"
+             onerror="this.style.display='none';this.parentElement.textContent='🍞'">
+        <span class="w-prod-badge teal">Pieczywo</span>
+      </div>
+      <div class="w-prod-body">
+        <h3>Chlebki pszenno-żytnie</h3>
+        <p>Domowe chlebki z mąki z własnych upraw. Pachnące, chrupiące, wypiekane tradycyjną metodą.</p>
+      </div>
+    </div>
+
+    <div class="w-prod-card reveal" style="background:linear-gradient(135deg,var(--pd),#5a1040);display:flex;flex-direction:column;justify-content:center;padding:32px;text-align:center;">
+      <span style="font-size:3rem;display:block;margin-bottom:14px;">📞</span>
+      <h3 style="color:#fff;font-family:'Playfair Display',serif;margin-bottom:10px;">Zamów dziś</h3>
+      <p style="color:rgba(255,255,255,0.72);font-size:0.87rem;margin-bottom:20px;">Skontaktuj się, aby omówić Twoje zamówienie</p>
+      <a href="kontakt.html" class="btn-pink" style="justify-content:center;">Kontakt →</a>
+      <a href="tel:533863133" style="display:block;margin-top:12px;color:#f090c0;font-weight:700;font-size:1.1rem;text-decoration:none;">533 863 133</a>
+    </div>
+
+  </div>
+  <div style="text-align:center;margin-top:32px;">
+    <a href="oferta.html" class="btn-pink">Zobacz całą ofertę →</a>
+  </div>
+</section>
+
+<!-- NAGRODY – mini -->
+<section style="background:var(--pcr);padding:72px 24px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <span class="w-label">Wyróżnienia</span>
+    <h2 class="w-title" style="margin-bottom:32px;">Smak doceniony<br>przez jury</h2>
+    <div class="w-award-grid">
+      <div class="w-award-card reveal">
+        <span class="medal">🏆</span>
+        <h4>Perła 2025</h4>
+        <p>Farsz z kaszy gryczanej niepalonej – najważniejsza ogólnopolska nagroda dla produktów regionalnych. Dwie Perły w jednej rodzinie (Pasieka – Perła 2023)!</p>
+      </div>
+      <div class="w-award-card reveal">
+        <span class="medal">🥇</span>
+        <h4>Najwyższe wyróżnienie – Sernik w kratkę</h4>
+        <p>Konkurs Smaki Regionów w Muzeum Wsi Kieleckiej w Tokarni. Jury przyznało najwyższe wyróżnienie w całym konkursie.</p>
+      </div>
+      <div class="w-award-card reveal">
+        <span class="medal">🍽</span>
+        <h4>Dziedzictwo Kulinarne Świętokrzyskie</h4>
+        <p>Certyfikat Sieci Dziedzictwa Kulinarnego przyznany 17 grudnia 2021 roku z rąk Marszałka Województwa Świętokrzyskiego.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:28px;">
+      <a href="nagrody.html" class="btn-pink">Więcej o nagrodach →</a>
+    </div>
+  </div>
+</section>
+
+<!-- LINK DO PASIEKI -->
+<div style="background:var(--brown);padding:52px 24px;text-align:center;">
+  <h3 style="font-family:'Playfair Display',serif;color:var(--gold-lt);font-size:1.5rem;margin-bottom:10px;">🐝 Odkryj też Pasiekę Dobra Pszczoła</h3>
+  <p style="color:rgba(255,255,255,0.65);margin-bottom:22px;">Perła 2023 i dwa złote medale MTP Poznań – nagradzane miody z Puszczy Iłżeckiej</p>
+  <a href="../index.html" class="btn-primary">Odwiedź pasiekę →</a>
+</div>
+
+<div id="w-footer"></div>
+
+<!-- Lightbox -->
+<div class="lb" id="lb">
+  <button class="lb-close" onclick="closeLb()">×</button>
+  <button class="lb-nav lb-prev" onclick="navLb(-1)">‹</button>
+  <img id="lb-img" src="" alt="">
+  <button class="lb-nav lb-next" onclick="navLb(1)">›</button>
+</div>
+
+<script src="_shared.js"></script>
+<script>
+  document.getElementById('w-nav').innerHTML = waniliaNav('index.html');
+  document.getElementById('w-footer').innerHTML = waniliaFooter();
+  initWanilia();
+
+  // Simple lightbox for perla photos
+  let lbImgs = [], lbIdx = 0;
+  function openLb(src) {
+    document.getElementById('lb-img').src = src;
+    document.getElementById('lb').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb() {
+    document.getElementById('lb').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function navLb(d) {
+    lbIdx = (lbIdx + d + lbImgs.length) % lbImgs.length;
+    document.getElementById('lb-img').src = lbImgs[lbIdx];
+  }
+  document.getElementById('lb').addEventListener('click', e => { if(e.target===e.currentTarget) closeLb(); });
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeLb(); if(e.key==='ArrowLeft') navLb(-1); if(e.key==='ArrowRight') navLb(1); });
+
+  // Make perla photos clickable
+  lbImgs = ['images/perla2025/perla2025_1.jpg','images/perla2025/perla2025_2.jpg','images/perla2025/perla2025_3.jpg','images/perla2025/perla2025_4.jpg'];
+  document.querySelectorAll('.perla-hero-band img').forEach((img, i) => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', () => { lbIdx = i; openLb(lbImgs[i]); });
+  });
+</script>
+</body>
+</html>

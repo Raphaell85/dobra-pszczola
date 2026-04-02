@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt i zamówienia | Wanilia i Migdały</title>
+  <link rel="icon" href="../images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="wanilia.css">
+  <style>
+    .contact-layout { display:grid; grid-template-columns:1fr 1.5fr; gap:48px; align-items:start; }
+    .w-ccard { background:#fff; border-radius:16px; padding:24px; box-shadow:0 4px 16px rgba(46,20,32,0.08); margin-bottom:14px; display:flex; gap:16px; align-items:flex-start; border-left:4px solid var(--pw); }
+    .w-ccard .ico { font-size:1.7rem; flex-shrink:0; }
+    .w-ccard h4 { font-family:'Playfair Display',serif; color:var(--pd); margin-bottom:5px; font-size:0.98rem; }
+    .w-ccard a,.w-ccard p { color:#7a4060; font-size:0.9rem; text-decoration:none; display:block; margin-bottom:2px; }
+    .w-ccard a:hover { color:var(--pw); }
+    .w-ccard a.big { font-size:1.2rem; font-weight:700; color:var(--pd); }
+    @media(max-width:840px) { .contact-layout { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<div id="w-nav"></div>
+
+<div style="background:linear-gradient(135deg,var(--pd),#5a1040);padding:80px 24px 60px;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;right:3%;top:50%;transform:translateY(-50%);font-size:12rem;opacity:0.04;">🎂</div>
+  <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);color:#fff;margin-bottom:12px;">📞 Kontakt i zamówienia</h1>
+  <p style="color:rgba(255,255,255,0.68);max-width:480px;margin:0 auto;">Chętnie przyjmiemy Państwa zamówienie i odpowiemy na wszelkie pytania</p>
+  <div style="width:60px;height:4px;background:var(--pw);border-radius:2px;margin:20px auto 0;"></div>
+</div>
+
+<section class="section">
+  <div class="contact-layout">
+
+    <!-- DANE -->
+    <div>
+      <span class="w-label">Dane kontaktowe</span>
+      <h2 class="w-title" style="margin-bottom:24px;">Wanilia i Migdały</h2>
+
+      <div class="w-ccard">
+        <span class="ico">📍</span>
+        <div>
+          <h4>Adres</h4>
+          <p>Małyszyn Dolny 20</p>
+          <p>27-220 Mirzec</p>
+          <p>Gmina Mirzec, woj. świętokrzyskie</p>
+        </div>
+      </div>
+      <div class="w-ccard">
+        <span class="ico">📞</span>
+        <div>
+          <h4>Telefon</h4>
+          <a href="tel:533863133" class="big">533 863 133</a>
+          <p style="color:#9a7a5a;font-size:0.83rem;margin-top:3px;">Pon.–Sob.: 8:00–20:00</p>
+        </div>
+      </div>
+      <div class="w-ccard">
+        <span class="ico">✉</span>
+        <div>
+          <h4>E-mail</h4>
+          <a href="mailto:dobrapszczola@o2.pl" style="font-weight:700;color:var(--pd);">dobrapszczola@o2.pl</a>
+          <p style="font-size:0.83rem;color:#9a7a5a;">Odpowiadamy w ciągu 24 h</p>
+        </div>
+      </div>
+      <div class="w-ccard">
+        <span class="ico">📘</span>
+        <div>
+          <h4>Facebook</h4>
+          <a href="https://www.facebook.com/pasiekadobrapszczola" target="_blank" rel="noopener" style="font-weight:700;color:var(--pd);">Pasieka Dobra Pszczoła</a>
+        </div>
+      </div>
+
+      <div style="background:linear-gradient(135deg,var(--pd),#5a1040);border-radius:16px;padding:24px;margin-top:4px;">
+        <h4 style="color:#f090c0;font-family:'Playfair Display',serif;margin-bottom:10px;">🎂 Jak zamówić?</h4>
+        <p style="color:rgba(255,255,255,0.75);font-size:0.87rem;line-height:1.7;">
+          1. Wypełnij formularz lub zadzwoń<br>
+          2. Omówimy termin i szczegóły zamówienia<br>
+          3. Odbierz osobiście w Małyszynie Dolnym<br>
+          <em style="font-size:0.8rem;opacity:0.7;">Możliwa dostawa na terenie gminy Mirzec</em>
+        </p>
+      </div>
+    </div>
+
+    <!-- FORMULARZ -->
+    <div>
+      <div class="w-form">
+        <h3>Zamów lub zapytaj 🎂</h3>
+        <p class="sub">Wyślij wiadomość bezpośrednio – formularz działa bez konieczności otwierania programu pocztowego. Wiadomość trafi na nasz e-mail.</p>
+
+        <div class="form-group">
+          <label>Imię i nazwisko *</label>
+          <input type="text" id="wn-name" placeholder="Jan Kowalski" required>
+        </div>
+        <div class="form-group">
+          <label>E-mail *</label>
+          <input type="email" id="wn-email" placeholder="jan@email.pl" required>
+        </div>
+        <div class="form-group">
+          <label>Telefon</label>
+          <input type="tel" id="wn-phone" placeholder="600 000 000">
+        </div>
+        <div class="form-group">
+          <label>Czego dotyczy zamówienie?</label>
+          <select id="wn-subject">
+            <option>Sernik w kratkę – zamówienie</option>
+            <option>Tort okolicznościowy</option>
+            <option>Tort weselny</option>
+            <option>Ciasta domowe</option>
+            <option>Pierogi</option>
+            <option>Chlebki pszenne</option>
+            <option>Wyroby garmażeryjne</option>
+            <option>Pytanie o ofertę</option>
+            <option>Inne</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Wiadomość *</label>
+          <textarea id="wn-message" placeholder="Np. chciałabym zamówić tort urodzinowy na 40 osób, termin: 15 maja. Proszę o kontakt w celu omówienia szczegółów." required></textarea>
+        </div>
+
+        <button class="send-btn-w" id="wn-send-btn" onclick="sendForm()">
+          📨 Wyślij wiadomość
+        </button>
+
+        <div class="w-msg-ok" id="wn-msg-ok">
+          <h4>✅ Wiadomość wysłana!</h4>
+          <p>Dziękujemy! Odpiszemy lub zadzwonimy wkrótce.<br>
+             W pilnych sprawach: <strong>533 863 133</strong></p>
+        </div>
+        <div class="w-msg-err" id="wn-msg-err">
+          Wystąpił problem. Zadzwoń na <a href="tel:533863133" style="color:var(--pw);font-weight:700;">533 863 133</a>
+          lub napisz na <a href="mailto:dobrapszczola@o2.pl" style="color:var(--pw);">dobrapszczola@o2.pl</a>
+        </div>
+
+        <p style="font-size:0.73rem;color:#b0906a;margin-top:12px;text-align:center;">
+          🔒 Wiadomość wysyłana bezpośrednio na adres dobrapszczola@o2.pl bez otwierania programu pocztowego
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mapa -->
+<div style="padding:0 24px 72px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <h3 style="font-family:'Playfair Display',serif;color:var(--pd);text-align:center;margin-bottom:20px;">📍 Małyszyn Dolny 20, 27-220 Mirzec</h3>
+    <div style="border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(46,20,32,0.12);">
+      <iframe
+        src="https://www.openstreetmap.org/export/embed.html?bbox=21.1081%2C51.1309%2C21.1481%2C51.1509&layer=mapnik&marker=51.1409%2C21.1281"
+        width="100%" height="380" style="border:0;display:block;" allowfullscreen loading="lazy"
+        title="Wanilia i Migdały – Małyszyn Dolny 20, 27-220 Mirzec">
+      </iframe>
+    </div>
+    <div style="text-align:center;margin-top:14px;">
+      <a href="https://maps.google.com/?q=Małyszyn+Dolny+20,+27-220+Mirzec,+Polska" target="_blank" rel="noopener" class="btn-primary">
+        🗺 Otwórz w Google Maps
+      </a>
+    </div>
+  </div>
+</div>
+
+<div style="background:var(--brown);padding:52px 24px;text-align:center;">
+  <h3 style="font-family:'Playfair Display',serif;color:var(--gold-lt);margin-bottom:10px;">🐝 Odkryj też nagradzane miody</h3>
+  <p style="color:rgba(255,255,255,0.65);margin-bottom:20px;">Pasieka Dobra Pszczoła – Perła 2023, dwa złote medale MTP Poznań</p>
+  <a href="../index.html" class="btn-primary">Odwiedź pasiekę →</a>
+</div>
+
+<div id="w-footer"></div>
+
+<!-- Netlify Forms (ukryty) -->
+<form name="wanilia-contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input name="bot-field"><input name="name"><input name="email">
+  <input name="phone"><input name="subject"><textarea name="message"></textarea>
+</form>
+
+<script src="_shared.js"></script>
+<script>
+document.getElementById('w-nav').innerHTML = waniliaNav('kontakt.html');
+document.getElementById('w-footer').innerHTML = waniliaFooter();
+initWanilia();
+
+async function sendForm() {
+  const name    = document.getElementById('wn-name').value.trim();
+  const email   = document.getElementById('wn-email').value.trim();
+  const message = document.getElementById('wn-message').value.trim();
+  const errEl   = document.getElementById('wn-msg-err');
+  const okEl    = document.getElementById('wn-msg-ok');
+
+  errEl.style.display = 'none';
+
+  if (!name || !email || !message) {
+    alert('Proszę wypełnić pola: imię i nazwisko, e-mail oraz wiadomość.');
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert('Proszę podać prawidłowy adres e-mail.');
+    return;
+  }
+
+  const btn = document.getElementById('wn-send-btn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Wysyłanie...';
+
+  const payload = {
+    name, email,
+    phone:   document.getElementById('wn-phone').value.trim(),
+    subject: document.getElementById('wn-subject').value,
+    message,
+    brand: 'wanilia'
+  };
+
+  // 1. Netlify serverless function (preferred)
+  try {
+    const res = await fetch('/.netlify/functions/send-contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (res.ok) { showOk(); return; }
+  } catch (_) {}
+
+  // 2. Netlify Forms fallback (no JS required, Netlify handles delivery)
+  try {
+    const fd = new FormData();
+    fd.append('form-name', 'wanilia-contact');
+    fd.append('name', name);
+    fd.append('email', email);
+    fd.append('phone', payload.phone);
+    fd.append('subject', payload.subject);
+    fd.append('message', message);
+    const res2 = await fetch('/', { method: 'POST', body: fd });
+    if (res2.ok) { showOk(); return; }
+  } catch (_) {}
+
+  // 3. Last resort – open email client
+  try {
+    window.open(`mailto:dobrapszczola@o2.pl?subject=${encodeURIComponent('[Wanilia] ' + payload.subject)}&body=${encodeURIComponent('Od: ' + name + '\nEmail: ' + email + '\nTel: ' + payload.phone + '\n\n' + message)}`);
+    showOk();
+  } catch(_) {
+    btn.disabled = false;
+    btn.textContent = '📨 Wyślij wiadomość';
+    errEl.style.display = 'block';
+  }
+}
+
+function showOk() {
+  document.getElementById('wn-msg-ok').style.display = 'block';
+  const btn = document.getElementById('wn-send-btn');
+  btn.textContent = '✅ Wysłano!';
+  btn.disabled = true;
+  ['wn-name','wn-email','wn-phone','wn-message'].forEach(id =>
+    document.getElementById(id).value = '');
+}
+</script>
+</body>
+</html>

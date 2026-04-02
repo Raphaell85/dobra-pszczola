@@ -1,0 +1,15 @@
+[build]
+  publish = "."
+  functions = "functions"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    Content-Security-Policy = "default-src 'self' https://js.stripe.com https://fonts.googleapis.com https://fonts.gstatic.com https://upload.wikimedia.org https://commons.wikimedia.org 'unsafe-inline' 'unsafe-eval'"

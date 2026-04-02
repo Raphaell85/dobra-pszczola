@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nagrody | Pasieka Dobra Pszczoła</title>
+  <link rel="icon" href="images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .stats-bar { background:var(--gold); }
+    .stats-bar-inner { max-width:1000px; margin:0 auto; display:flex; flex-wrap:wrap; }
+    .stat-box { flex:1; min-width:140px; padding:26px 20px; text-align:center; border-right:2px solid rgba(59,31,10,0.15); }
+    .stat-box:last-child { border-right:none; }
+    .stat-box strong { display:block; font-family:'Playfair Display',serif; font-size:1.9rem; font-weight:900; color:var(--brown); line-height:1.1; }
+    .stat-box span { font-size:0.77rem; font-weight:700; color:rgba(59,31,10,0.7); }
+
+    .perla-card { background:linear-gradient(135deg,#1a0800,#3B1F0A); padding:80px 24px; text-align:center; position:relative; overflow:hidden; }
+    .perla-card::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 50% 50%,rgba(212,160,23,0.18) 0%,transparent 65%); }
+    .perla-medal { font-size:5rem; display:block; margin-bottom:18px; position:relative; animation:glow 2s ease-in-out infinite alternate; }
+    @keyframes glow { from{filter:drop-shadow(0 0 8px rgba(212,160,23,0.4))} to{filter:drop-shadow(0 0 24px rgba(212,160,23,0.8))} }
+    .perla-card h2 { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.2rem); color:var(--gold-lt); margin-bottom:10px; position:relative; }
+    .perla-card h2 em { color:#fff; font-style:normal; display:block; font-size:0.6em; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px; }
+    .perla-card p { color:rgba(255,255,255,0.72); max-width:640px; margin:0 auto 28px; font-size:1rem; line-height:1.8; position:relative; }
+    .perla-tag { display:inline-flex; gap:8px; align-items:center; background:var(--gold); color:var(--brown); font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:8px 22px; border-radius:100px; box-shadow:0 4px 20px rgba(212,160,23,0.4); position:relative; }
+
+    /* Perła photo next to text */
+    .perla-photo { max-width:260px; border-radius:16px; box-shadow:0 12px 40px rgba(0,0,0,0.5); margin:28px auto 0; position:relative; display:block; }
+
+    /* Timeline */
+    .timeline { position:relative; padding:20px 0; }
+    .timeline::before { content:''; position:absolute; left:50%; top:0; bottom:0; width:3px; background:linear-gradient(to bottom,var(--gold),var(--green-lt),var(--gold)); transform:translateX(-50%); }
+    .tl-item { display:flex; justify-content:flex-end; padding-right:calc(50% + 48px); margin-bottom:52px; position:relative; }
+    .tl-item:nth-child(even) { justify-content:flex-start; padding-right:0; padding-left:calc(50% + 48px); }
+    .tl-dot { position:absolute; left:50%; top:24px; width:48px; height:48px; background:var(--gold); border-radius:50%; transform:translateX(-50%); display:flex; align-items:center; justify-content:center; font-size:1.4rem; box-shadow:0 4px 20px rgba(212,160,23,0.4); z-index:2; }
+    .tl-card { background:#fff; border-radius:20px; padding:28px; max-width:460px; width:100%; box-shadow:0 6px 28px rgba(59,31,10,0.1); border-left:5px solid var(--gold); transition:transform 0.3s; }
+    .tl-card:hover { transform:scale(1.03); }
+    .tl-item:nth-child(even) .tl-card { border-left:none; border-right:5px solid var(--green-lt); }
+    .tl-year { font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+    .tl-card h3 { font-family:'Playfair Display',serif; color:var(--brown); font-size:1.1rem; margin-bottom:8px; }
+    .tl-card p { color:#7a5c35; font-size:0.88rem; line-height:1.7; margin-bottom:10px; }
+    .tl-ribbon { display:inline-block; background:var(--gold); color:var(--brown); font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:4px 14px; border-radius:100px; }
+    .tl-photo { width:100%; border-radius:12px; margin-top:14px; object-fit:cover; max-height:200px; }
+
+    /* Certs */
+    .certs-big { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    .cert-big { border-radius:22px; padding:36px; display:flex; gap:20px; align-items:flex-start; color:#fff; }
+    .cert-big.brown { background:linear-gradient(135deg,var(--brown),#2d1506); }
+    .cert-big.green  { background:linear-gradient(135deg,var(--green),#1d3a12); }
+    .cert-big.navy   { background:linear-gradient(135deg,#1a2a4a,#0d1a30); }
+    .cert-big.forest { background:linear-gradient(135deg,#1a3020,#0d1a12); }
+    .cert-big .icon { font-size:3rem; flex-shrink:0; }
+    .cert-big h3 { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--gold-lt); margin-bottom:10px; }
+    .cert-big p { color:rgba(255,255,255,0.72); font-size:0.87rem; line-height:1.75; }
+    .cert-big img { height:60px; width:auto; border-radius:8px; margin-top:14px; background:#fff; padding:6px; display:block; }
+
+    @media(max-width:860px) {
+      .timeline::before { left:22px !important; }
+      .tl-item,.tl-item:nth-child(even) { justify-content:flex-start !important; padding:0 0 0 76px !important; }
+      .tl-dot { left:22px !important; }
+      .tl-card { max-width:100% !important; }
+      .tl-item:nth-child(even) .tl-card { border-right:none !important; border-left:5px solid var(--green-lt) !important; }
+      .certs-big { grid-template-columns:1fr !important; }
+    }
+    @media(max-width:540px) { .stat-box { min-width:50%; border-bottom:2px solid rgba(59,31,10,0.08); } }
+  </style>
+</head>
+<body>
+<div id="nav-container"></div>
+
+<div style="background:linear-gradient(135deg,var(--brown),#2d1506);padding:80px 24px 60px;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;right:3%;top:50%;transform:translateY(-50%);font-size:14rem;opacity:0.04;">🏆</div>
+  <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);color:#fff;margin-bottom:12px;">🏆 Nagrody i osiągnięcia</h1>
+  <p style="color:rgba(255,255,255,0.68);max-width:520px;margin:0 auto;">Jakość potwierdzona przez najbardziej prestiżowe konkursy w Polsce</p>
+  <div style="width:60px;height:4px;background:var(--gold);border-radius:2px;margin:20px auto 0;"></div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat-box"><strong>🏆</strong><span>Perła 2023</span></div>
+    <div class="stat-box"><strong>🥇</strong><span>Złoty medal MTP<br>2021 i 2024</span></div>
+    <div class="stat-box"><strong>3×</strong><span>I miejsce w woj. Świętokrzyskim</span></div>
+    <div class="stat-box"><strong>2</strong><span>Certyfikaty regionalne</span></div>
+    <div class="stat-box"><strong>🌿</strong><span>Natura 2000</span></div>
+  </div>
+</div>
+
+<!-- PERŁA 2023 -->
+<div class="perla-card">
+  <span class="perla-medal">🏆</span>
+  <h2>
+    <em>Najważniejsza nagroda kulinarna w Polsce</em>
+    Perła 2023
+  </h2>
+  <p>Miód wielokwiatowy wiosenny z Pasieki Dobra Pszczoła zdobył <strong>Perłę 2023</strong> –
+     prestiżową nagrodę dla najwyjątkniejszych produktów regionalnych w całym kraju.</p>
+  <span class="perla-tag">🐝 Miód wielokwiatowy wiosenny • Perła 2023</span>
+  <div style="max-width:800px;margin:28px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:14px;" class="reveal">
+    <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;">
+      <img src="images/nagrody/perla2023.jfif" alt="Perła 2023" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+    </div>
+    <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;">
+      <img src="images/nagrody/polagra_nagrody.jpg" alt="Zacharscy z nagrodami na POLAGRA Poznań" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<section class="section">
+  <span class="section-label">Historia nagród</span>
+  <h2 class="section-title" style="margin-bottom:52px;">Droga do doskonałości</h2>
+
+  <div class="timeline">
+
+    <div class="tl-item reveal">
+      <div class="tl-dot">🏆</div>
+      <div class="tl-card">
+        <div class="tl-year">Najważniejsze wyróżnienie w Polsce</div>
+        <h3>Perła 2023 – Miód wielokwiatowy wiosenny</h3>
+        <p>Ogólnopolska nagroda dla najwybitniejszych produktów regionalnych. Miód wielokwiatowy wiosenny z Małyszyna Dolnego zdobył ją jako jeden z nielicznych miodów w historii konkursu.</p>
+        <img src="images/nagrody/perla2023_1.jpg" alt="Perła 2023" class="tl-photo"
+             onerror="this.style.display='none'">
+        <br><span class="tl-ribbon">🏆 Perła 2023</span>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-dot">🥇</div>
+      <div class="tl-card">
+        <div class="tl-year">Targi Smaki Regionów • Poznań 2024</div>
+        <h3>Złoty medal – Miód spadziowy iglasty (drugi raz!)</h3>
+        <p>Miód spadziowy z drzew iglastych Puszczy Iłżeckiej ponownie zdobył złoty medal na Międzynarodowych Targach Poznańskich w 2024 roku. Drugie złoto potwierdza niezmienną jakość.</p>
+        <img src="images/nagrody/dyplom_smaki_2024.jpg" alt="Dyplom MTP 2024" class="tl-photo"
+             onerror="this.style.display='none'">
+        <br><span class="tl-ribbon">🥇 Złoto MTP Poznań 2024</span>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-dot">🥇</div>
+      <div class="tl-card">
+        <div class="tl-year">Targi Smaki Regionów • Poznań 2021</div>
+        <h3>Złoty medal – Miód spadziowy iglasty</h3>
+        <p>Pierwsze złoto na Międzynarodowych Targach Poznańskich za miód ze spadzi drzew iglastych Puszczy Iłżeckiej. Głęboki, leśny aromat zachwycił jury ogólnopolskiego konkursu.</p>
+        <img src="images/nagrody/kulinarnedziedzictwo_smakiregionow_miodspadziowyzespadzidzrzewiglastych.jfif"
+             alt="Dyplom MTP 2021" class="tl-photo" onerror="this.style.display='none'">
+        <br><span class="tl-ribbon">🥇 Złoto MTP Poznań 2021</span>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-dot">🥇</div>
+      <div class="tl-card">
+        <div class="tl-year">Konkurs regionalny • woj. Świętokrzyskie</div>
+        <h3>I miejsce – Miód gryczany</h3>
+        <p>Najlepszy miód gryczany w Województwie Świętokrzyskim. Ciemny, intensywny miód bogaty w składniki mineralne, pozyskany z gryki uprawianej w okolicach Puszczy Iłżeckiej. Wyróżnienie również na MTP Poznań.</p>
+        <img src="images/nagrody/medale.jpg" alt="Medale pasieki" class="tl-photo"
+             onerror="this.style.display='none'">
+        <br><span class="tl-ribbon">🥇 I miejsce + wyróżnienie MTP</span>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-dot">🎖</div>
+      <div class="tl-card">
+        <div class="tl-year">MTP Poznań • Wyróżnienie</div>
+        <h3>Wyróżnienie – Miód lipowy</h3>
+        <p>Wyróżnienie na Międzynarodowych Targach Poznańskich za delikatny, biały miód lipowy. Jury doceniło jego wyjątkowy aromat kwiatów lipy i klasyczną kremową barwę.</p>
+        <span class="tl-ribbon">🎖 Wyróżnienie MTP</span>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-dot">🍽</div>
+      <div class="tl-card">
+        <div class="tl-year">Certyfikat • 2021</div>
+        <h3>Dziedzictwo Kulinarne Świętokrzyskie</h3>
+        <p>Certyfikat prestiżowej Sieci Dziedzictwa Kulinarnego – europejskiego systemu certyfikacji żywności regionalnej najwyższej jakości. Odebrany z rąk Marszałka Województwa Świętokrzyskiego.</p>
+        <img src="images/nagrody/dyplom.jfif" alt="Certyfikat Dziedzictwa Kulinarnego" class="tl-photo"
+             onerror="this.style.display='none'">
+        <br><span class="tl-ribbon">📜 Dziedzictwo Kulinarne 2021</span>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-dot">⭐</div>
+      <div class="tl-card">
+        <div class="tl-year">Certyfikat • ŚODR</div>
+        <h3>Świętokrzyska Kuźnia Smaków</h3>
+        <p>Certyfikat Świętokrzyskiego Ośrodka Doradztwa Rolniczego dla producentów wyróżniających się jakością i autentycznością produktów regionalnych.</p>
+        <img src="images/nagrody/swietokrzyskakuzniasmakow.jfif" alt="Świętokrzyska Kuźnia Smaków" class="tl-photo"
+             onerror="this.style.display='none'">
+        <br><span class="tl-ribbon">⭐ Świętokrzyska Kuźnia Smaków</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTYFIKATY -->
+<div style="background:#fdf8ee;padding:72px 24px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <span class="section-label">Certyfikaty i nadzór</span>
+    <h2 class="section-title" style="margin-bottom:32px;">Gwarancja<br>jakości</h2>
+    <div class="certs-big">
+      <div class="cert-big brown reveal">
+        <span class="icon">🍽</span>
+        <div>
+          <h3>Dziedzictwo Kulinarne Świętokrzyskie</h3>
+          <p>Europejska Sieć Regionalnego Dziedzictwa Kulinarnego – certyfikat autentyczności i tradycji wytwarzania produktów regionalnych. Przyznany w 2021 roku.</p>
+        </div>
+      </div>
+      <div class="cert-big green reveal">
+        <span class="icon">⭐</span>
+        <div>
+          <h3>Świętokrzyska Kuźnia Smaków</h3>
+          <p>Certyfikat Świętokrzyskiego Ośrodka Doradztwa Rolniczego. Przyznawany lokalnym producentom wyróżniającym się najwyższą jakością.</p>
+        </div>
+      </div>
+      <div class="cert-big navy reveal">
+        <span class="icon">🔬</span>
+        <div>
+          <h3>Państwowa Inspekcja Weterynaryjna</h3>
+          <p>Pasieka Dobra Pszczoła objęta jest stałym nadzorem Państwowej Inspekcji Weterynaryjnej. Regularne kontrole gwarantują bezpieczeństwo na każdym etapie produkcji.</p>
+        </div>
+      </div>
+      <div class="cert-big forest reveal">
+        <span class="icon">🌿</span>
+        <div>
+          <h3>Obszar Natura 2000</h3>
+          <p>Pasieka leży na granicy obszaru Natura 2000 w Puszczy Iłżeckiej. Pszczoły zbierają nektar wyłącznie z roślin dzikiego, czystego ekosystemu.</p>
+          <img src="images/natura2000.jpg" alt="Natura 2000" onerror="this.style.display='none'">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div style="background:linear-gradient(135deg,var(--green),#1d3a12);padding:64px 24px;text-align:center;">
+  <h2 style="font-family:'Playfair Display',serif;font-size:2rem;color:#fff;margin-bottom:14px;">Spróbuj nagrodzonego miodu 🍯</h2>
+  <p style="color:rgba(255,255,255,0.72);margin-bottom:28px;">Zamów bezpośrednio od pszczelarza. Darmowa dostawa od 150 zł.</p>
+  <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;">
+    <a href="sklep.html" class="btn-primary">🛒 Sklep online</a>
+    <a href="tel:609239345" class="btn-primary" style="background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.35);box-shadow:none;">📞 609 239 345</a>
+  </div>
+</div>
+
+<div id="footer-container"></div>
+<div id="checkout-container"></div>
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="js/stripe.js"></script>
+<script>
+document.getElementById('nav-container').innerHTML = getNavHTML('images/logo-pasieka.png');
+document.getElementById('footer-container').innerHTML = getFooterHTML('images/logo-pasieka.png');
+document.getElementById('checkout-container').innerHTML = getCheckoutModalHTML();
+</script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sklep | Pasieka Dobra Pszczoła – Miody i produkty pszczele</title>
+  <meta name="description" content="Kup naturalny miód online – gryczany, spadziowy (Złoto MTP Poznań), akacjowy, lipowy. Dostawa kurierem w Polsce.">
+  <link rel="icon" href="images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .shop-layout { display:grid; grid-template-columns:220px 1fr; gap:36px; align-items:start; }
+    .shop-sidebar { background:#fff; border-radius:20px; padding:28px; box-shadow:0 4px 20px rgba(59,31,10,0.08); position:sticky; top:84px; }
+    .shop-sidebar h3 { font-family:'Playfair Display',serif; color:var(--brown); font-size:1rem; margin-bottom:18px; }
+    .filter-group { margin-bottom:20px; }
+    .filter-group label { display:block; font-size:0.74rem; font-weight:700; color:#9a7a5a; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px; }
+    .chip { display:inline-block; padding:5px 13px; border-radius:100px; border:2px solid #e8d8c0; font-size:0.79rem; cursor:pointer; margin:3px; transition:all 0.2s; background:#fff; color:var(--brown); }
+    .chip:hover,.chip.on { background:var(--gold); border-color:var(--gold); font-weight:700; }
+    .sidebar-tel { margin-top:22px; padding-top:20px; border-top:1px solid #f0e0c0; }
+    .sidebar-tel p { font-size:0.82rem; color:#9a7a5a; margin-bottom:10px; }
+    .sidebar-tel a { display:inline-flex; align-items:center; gap:6px; background:var(--brown); color:#fff; padding:10px 18px; border-radius:50px; font-weight:700; font-size:0.85rem; text-decoration:none; }
+    .sidebar-tel a:hover { background:var(--gold); color:var(--brown); }
+
+    .ship-band { background:var(--green); padding:13px 24px; text-align:center; color:#fff; font-size:0.88rem; font-weight:700; }
+    .ship-band span { margin:0 10px; opacity:0.4; }
+
+    .shop-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:22px; flex-wrap:wrap; gap:12px; }
+    .count { color:#9a7a5a; font-size:0.85rem; }
+    .sort-sel { padding:8px 14px; border-radius:8px; border:2px solid #e8d8c0; font-family:'Lato',sans-serif; font-size:0.88rem; color:var(--brown); cursor:pointer; outline:none; }
+
+    .pgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:24px; }
+    .pcard { background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 4px 20px rgba(59,31,10,0.09); transition:transform 0.3s,box-shadow 0.3s; display:flex; flex-direction:column; }
+    .pcard:hover { transform:translateY(-8px); box-shadow:0 16px 40px rgba(59,31,10,0.16); }
+    .pcard-img { height:220px; overflow:hidden; position:relative; background:linear-gradient(135deg,#f5e6c0,#e8d09a); display:flex; align-items:center; justify-content:center; font-size:5rem; }
+    .pcard-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.4s; }
+    .pcard:hover .pcard-img img { transform:scale(1.07); }
+    .pcard-badge { position:absolute; top:12px; left:12px; background:var(--gold); color:var(--brown); font-size:0.68rem; font-weight:700; letter-spacing:0.07em; padding:4px 12px; border-radius:100px; text-transform:uppercase; }
+    .pcard-body { padding:20px; flex:1; }
+    .pcard-body h3 { font-family:'Playfair Display',serif; color:var(--brown); font-size:1.05rem; margin-bottom:6px; }
+    .pcard-body p { color:#7a5c35; font-size:0.82rem; line-height:1.6; }
+    .pcard-foot { padding:0 20px 20px; }
+    .price-variants { display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap; }
+    .pv { background:#fdf8ee; border:2px solid #e8d8c0; border-radius:10px; padding:8px 14px; cursor:pointer; transition:all 0.2s; text-align:center; }
+    .pv:hover,.pv.sel { background:var(--gold); border-color:var(--gold); }
+    .pv strong { display:block; font-size:0.95rem; color:var(--brown); }
+    .pv span { font-size:0.72rem; color:#7a5c35; }
+    .btn-add { display:block; width:100%; background:var(--brown); color:#fff; border:none; border-radius:50px; padding:12px; font-weight:700; font-size:0.88rem; cursor:pointer; transition:background 0.2s,transform 0.2s; }
+    .btn-add:hover { background:var(--gold); color:var(--brown); transform:scale(1.03); }
+
+    @media(max-width:820px) { .shop-layout { grid-template-columns:1fr !important; } .shop-sidebar { position:static !important; } }
+  </style>
+</head>
+<body>
+<div id="nav-container"></div>
+
+<div style="background:linear-gradient(135deg,var(--brown),#2d1506);padding:72px 24px 52px;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;right:3%;top:50%;transform:translateY(-50%);font-size:14rem;opacity:0.04;line-height:1;">🍯</div>
+  <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);color:#fff;margin-bottom:12px;">🍯 Sklep</h1>
+  <p style="color:rgba(255,255,255,0.68);max-width:480px;margin:0 auto;">Naturalne miody i produkty pszczele prosto od pszczelarza</p>
+  <div style="width:60px;height:4px;background:var(--gold);border-radius:2px;margin:20px auto 0;"></div>
+</div>
+
+<div class="ship-band">
+  🚚 Darmowa dostawa od 150 zł <span>|</span>
+  📦 Wysyłka kurierem InPost <span>|</span>
+  🔒 Bezpieczna płatność kartą / BLIK (Stripe) <span>|</span>
+  ⏱ Realizacja 2–3 dni robocze
+</div>
+
+<section class="section" style="padding-top:44px;">
+  <div class="shop-layout">
+    <aside class="shop-sidebar">
+      <h3>Filtry</h3>
+      <div class="filter-group">
+        <label>Kategoria</label>
+        <span class="chip on" data-f="all">Wszystkie</span>
+        <span class="chip" data-f="miod">Miody</span>
+        <span class="chip" data-f="pszczele">Produkty pszczele</span>
+      </div>
+      <div class="filter-group">
+        <label>Wyróżnienia</label>
+        <span class="chip" data-a="1">Tylko nagradzane 🏆</span>
+      </div>
+      <div class="sidebar-tel">
+        <p>Wolisz zamówić telefonicznie?</p>
+        <a href="tel:609239345">📞 609 239 345</a>
+      </div>
+    </aside>
+
+    <div>
+      <div class="shop-head">
+        <span class="count" id="result-count">Ładowanie...</span>
+        <select class="sort-sel" id="sort-sel" onchange="renderShop()">
+          <option value="">Domyślna kolejność</option>
+          <option value="price-asc">Cena: rosnąco</option>
+          <option value="price-desc">Cena: malejąco</option>
+          <option value="name">Alfabetycznie</option>
+        </select>
+      </div>
+      <div class="pgrid" id="pgrid"></div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-container"></div>
+<div id="checkout-container"></div>
+
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="js/stripe.js"></script>
+<script>
+document.getElementById('nav-container').innerHTML = getNavHTML('images/logo-pasieka.png');
+document.getElementById('footer-container').innerHTML = getFooterHTML('images/logo-pasieka.png');
+document.getElementById('checkout-container').innerHTML = getCheckoutModalHTML();
+
+// ── PRODUKTY Z PRAWDZIWYMI CENAMI I ZDJĘCIAMI ──────────────
+const PRODUCTS = [
+  {
+    id:'gryczany', cat:'miod', award:true,
+    name:'Miód gryczany',
+    badge:'🥇 Najlepszy w woj. Świętokrzyskim + wyróżnienie MTP',
+    img:'images/miody/gryczany.jfif',
+    desc:'Najlepszy miód w Województwie Świętokrzyskim oraz wyróżnienie na Międzynarodowych Targach Poznańskich. Ciemny, intensywny, bogaty w składniki mineralne.',
+    variants:[{label:'450 g',price:40},{label:'900 ml',price:75}]
+  },
+  {
+    id:'spadziowy', cat:'miod', award:true,
+    name:'Miód spadziowy iglasty',
+    badge:'🏅 Złoty medal MTP Poznań 2021 i 2024',
+    img:'images/miody/spadziowoiglasty.jfif',
+    desc:'Dwukrotny zdobywca złotego medalu na Międzynarodowych Targach Poznańskich (2021 i 2024). Wyjątkowy, ciemny miód leśny ze spadzi drzew iglastych Puszczy Iłżeckiej.',
+    variants:[{label:'600 g',price:65},{label:'900 ml',price:100}]
+  },
+  {
+    id:'lipowy', cat:'miod', award:true,
+    name:'Miód lipowy',
+    badge:'🎖 Wyróżnienie MTP Poznań',
+    img:'images/miody/lipowy.jpg',
+    desc:'Wyróżnienie na Międzynarodowych Targach Poznańskich. Klasyczny biały miód o delikatnym, uspokajającym aromacie kwiatów lipy. Polecany na sen i przeziębienie.',
+    variants:[{label:'450 g',price:45},{label:'900 ml',price:80}]
+  },
+  {
+    id:'akacjowy', cat:'miod', award:false,
+    name:'Miód akacjowy',
+    badge:'Naturalny',
+    img:'images/miody/akacjowy.jfif',
+    desc:'Jasny, płynny miód o delikatnym, kwiatowym smaku. Długo nie krystalizuje. Jeden z najbardziej lubianych przez dzieci.',
+    variants:[{label:'450 g',price:40},{label:'900 ml',price:75}]
+  },
+  {
+    id:'faceliowy', cat:'miod', award:false,
+    name:'Miód faceliowy',
+    badge:'Łagodny',
+    img:'images/miody/wielokwiatowy.jpg',
+    desc:'Jasny, kremowy miód o łagodnym smaku i pięknej barwie. Facelię uwielbiają pszczoły – stąd jego wyjątkowa jakość.',
+    variants:[{label:'450 g',price:40}]
+  },
+  {
+    id:'nektarowo-spadziowy', cat:'miod', award:false,
+    name:'Miód nektarowo-spadziowy',
+    badge:'Wyjątkowy',
+    img:'images/miody/spadziowonawlociowy.jfif',
+    desc:'Połączenie miodu nektarowego i leśnej spadzi – wyjątkowy smak i aromat. Bogaty w enzymy i składniki mineralne.',
+    variants:[{label:'900 ml',price:80}]
+  },
+  {
+    id:'rokitnik', cat:'miod', award:false,
+    name:'Miód kremowany z rokitnikiem',
+    badge:'Superfood',
+    img:'images/miody/miody.jfif',
+    desc:'Delikatny kremowany miód z dodatkiem rokitnika – naturalnego źródła witaminy C. Wyjątkowy smak i właściwości zdrowotne.',
+    variants:[{label:'410 g',price:40}]
+  },
+  {
+    id:'pylekpropolis', cat:'miod', award:false,
+    name:'Miód kremowany z pyłkiem i propolisem',
+    badge:'Premium',
+    img:'images/miody/zpylkiemipropolisem.jfif',
+    desc:'Kremowany miód wzbogacony o pyłek pszczeli i propolis – naturalne wzmocnienie odporności. Trójwymiarowa moc produktów pszczelich.',
+    variants:[{label:'410 g',price:45}]
+  },
+  {
+    id:'pierzga', cat:'pszczele', award:false,
+    name:'Pierzga pszczela',
+    badge:'Fermentowany pyłek',
+    img:'images/miody/pierzga.jfif',
+    desc:'Sfermentowany pyłek pszczeli – najłatwiej przyswajalna forma pyłku. Naturalny probiotyk i immunostymulator. Rzadki i cenny produkt ula.',
+    variants:[{label:'180 g',price:60}]
+  },
+];
+
+let catF='all', awardF=false, sortV='';
+// Default selected variant per product
+const selVariant = {};
+PRODUCTS.forEach(p => selVariant[p.id] = 0);
+
+function filtered() {
+  let list = [...PRODUCTS];
+  if (catF !== 'all') list = list.filter(p => p.cat === catF);
+  if (awardF)         list = list.filter(p => p.award);
+  if (sortV === 'price-asc')  list.sort((a,b) => a.variants[0].price - b.variants[0].price);
+  if (sortV === 'price-desc') list.sort((a,b) => b.variants[0].price - a.variants[0].price);
+  if (sortV === 'name')       list.sort((a,b) => a.name.localeCompare(b.name,'pl'));
+  return list;
+}
+
+function renderShop() {
+  sortV = document.getElementById('sort-sel').value;
+  const list = filtered();
+  const n = list.length;
+  document.getElementById('result-count').textContent =
+    `${n} produkt${n===1?'':n<5?'y':'ów'}`;
+
+  document.getElementById('pgrid').innerHTML = list.map(p => `
+    <div class="pcard">
+      <div class="pcard-img">
+        <img src="${p.img}" alt="${p.name}" loading="lazy"
+             onerror="this.style.display='none';this.parentElement.textContent='🍯'">
+        <span class="pcard-badge">${p.badge}</span>
+      </div>
+      <div class="pcard-body">
+        <h3>${p.name}</h3>
+        <p>${p.desc}</p>
+      </div>
+      <div class="pcard-foot">
+        <div class="price-variants" id="pv-${p.id}">
+          ${p.variants.map((v,i) => `
+            <div class="pv ${i===selVariant[p.id]?'sel':''}"
+                 onclick="selV('${p.id}',${i})">
+              <strong>${v.price} zł</strong>
+              <span>${v.label}</span>
+            </div>`).join('')}
+        </div>
+        <button class="btn-add" onclick="doAdd('${p.id}')">🛒 Dodaj do koszyka</button>
+      </div>
+    </div>`).join('');
+}
+
+function selV(id, idx) {
+  selVariant[id] = idx;
+  document.querySelectorAll(`#pv-${id} .pv`).forEach((el,i) =>
+    el.classList.toggle('sel', i===idx));
+}
+
+function doAdd(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  const v = p.variants[selVariant[id]];
+  addToCart({ id: id+'-'+v.label, name: p.name, weight: v.label, price: v.price, emoji: '🍯' });
+}
+
+document.addEventListener('click', e => {
+  const fc = e.target.closest('[data-f]');
+  if (fc) { document.querySelectorAll('[data-f]').forEach(c=>c.classList.remove('on')); fc.classList.add('on'); catF=fc.dataset.f; renderShop(); }
+  const ac = e.target.closest('[data-a]');
+  if (ac) { awardF=!awardF; ac.classList.toggle('on',awardF); renderShop(); }
+});
+
+renderShop();
+</script>
+</body>
+</html>
